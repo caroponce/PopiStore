@@ -27,10 +27,6 @@ const falda = temporadaVerano.filter ((el) => el.categoria.includes("falda"));
 const camisa = temporadaVerano.filter ((el) => el.categoria.includes("camisa"));
 
 
-
-
-
-
 let opciones = prompt(" Precione: \n 1- Si quiere buscar alguna producto en particular \n 2- Si quiere ver toda la lista de producto \n 3- Si quieres iniciar su compra")
 
 
@@ -48,37 +44,14 @@ if (opciones == 1) {
     }  else if (opciones == 2){
         console.log(temporadaVerano)
     }   else if (opciones == 3) {
-        let idCompra = prompt("Que queres comprar? Ingrese el numero de ID")
-        if (idCompra == 0) {
-            let precio = temporadaVerano[idCompra].precio;
-            console.log("El total de tu compre es de " + precio)
-        } else if (idCompra == 1) {
-            let precio = temporadaVerano[idCompra].precio;
-            console.log("El total de tu compre es de " + precio)
-        } else if (idCompra == 2) {
-            let precio = temporadaVerano[idCompra].precio;
-            console.log("El total de tu compre es de " + precio)
-        } else if (idCompra == 3) {
-            let precio = temporadaVerano[idCompra].precio;
-            console.log("El total de tu compre es de " + precio)
-        } else if (idCompra == 4) {
-            let precio = temporadaVerano[idCompra].precio;
-            console.log("El total de tu compre es de " + precio)
-        } else if (idCompra == 5) {
-            let precio = temporadaVerano[idCompra].precio;
-            console.log("El total de tu compre es de " + precio)
-        } else if (idCompra == 6) {
-            let precio = temporadaVerano[idCompra].precio;
-            console.log("El total de tu compre es de " + precio)
-        } else if (idCompra == 7) {
-            let precio = temporadaVerano[idCompra].precio;
-            console.log("El total de tu compre es de " + precio)
-        } else if (idCompra == 8) {
-            let precio = temporadaVerano[idCompra].precio;
-            console.log("El total de tu compre es de " + precio)
+        let idIngresado = prompt("ingrese el numero del ID")
+        let idCompra = temporadaVerano[idIngresado].id;
+        let precio = temporadaVerano[idIngresado].precio;
+        if (idIngresado == idCompra) {
+            console.log("El total de tu compra es de " + precio)
         } else {
-            alert("ingrese una opcion correcta")
-        } 
+            alert("ingrese un ID correcto")
+        }
     
     } else {
         alert("Ingrese un opcion correcta")
