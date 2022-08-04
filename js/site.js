@@ -21,41 +21,67 @@ temporadaVerano.push(new producto (7, "Tita", 5500, "camisa"));
 temporadaVerano.push(new producto (8, "Nuri", 5300, "camisa"));
 
 
-const vestidos = temporadaVerano.filter ((el) => el.categoria.includes("vestido"));
-const tops = temporadaVerano.filter ((el) => el.categoria.includes("top"));
-const falda = temporadaVerano.filter ((el) => el.categoria.includes("falda"));
-const camisa = temporadaVerano.filter ((el) => el.categoria.includes("camisa"));
+let nombreUsuario = prompt("Registrate dejando tu nombre")
 
+let bienvenido = document.getElementById("bienvenido");
+bienvenido.innerText = `Bienvenido/a ${nombreUsuario}. Gracias por registraste`
 
-let opciones = prompt(" Precione: \n 1- Si quiere buscar alguna producto en particular \n 2- Si quiere ver toda la lista de producto \n 3- Si quieres iniciar su compra")
+let numero = 0
+        while (numero < 8) {
+         numero++;
+        let listaProductos = document.createElement("div");
+        listaProductos.innerHTML = `<h3> Producto:${temporadaVerano[numero].nombre}</h3>
+                                    <br />  <b>$: ${temporadaVerano[numero].precio} </b> `
+        document.body.appendChild(listaProductos);
+                        }
 
+let itemLista = document.getElementById("consultas-gral");
 
-if (opciones == 1) {
-    let opcionesProductos = prompt ("Que estas buscando \n A: VESTIDO \n B: TOP \n C: FALDA \n D: CAMISA")
-    if (opcionesProductos == "A" || opcionesProductos == "a") {
-        console.log(vestidos)
-    } else if (opcionesProductos == "B" || opcionesProductos == "b") {
-        console.log(tops)
-    } else if (opcionesProductos == "C" || opcionesProductos == "c") {
-            console.log(falda)
-        } else if (opcionesProductos == "D" || opcionesProductos == "d") {
-            console.log(camisa)  
-        }
-    }  else if (opciones == 2){
-        console.log(temporadaVerano)
-    }   else if (opciones == 3) {
-        let idIngresado = prompt("ingrese el numero del ID")
-        let idCompra = temporadaVerano[idIngresado].id;
-        let precio = temporadaVerano[idIngresado].precio;
-        if (idIngresado == idCompra) {
-            console.log("El total de tu compra es de " + precio)
-        } else {
-            alert("ingrese un ID correcto")
-        }
-    
-    } else {
-        alert("Ingrese un opcion correcta")
+itemLista.onmouseover = () => console.log("Metodos de pago : Transferencia, tarjeta de débito y tarjeta de crédito, Envios a todos el pais por correo argentino, 30 días para devoluciones");
+   
+let carritoEva = document.getElementById("carrito-eva");
+carritoEva.addEventListener("click", agregarCarrito1);
+function agregarCarrito1() {
+    console.log("Se ha agregado el producto " + temporadaVerano[0].nombre + " al carrito $" + temporadaVerano[0].precio)
     }
-    
 
-    
+let carritoBianca = document.getElementById("carrito-bianca");
+carritoBianca.addEventListener("click", agregarCarrito2);
+function agregarCarrito2() {
+    console.log("Se ha agregado el producto " + temporadaVerano[1].nombre + " al carrito $" + temporadaVerano[1].precio)
+        }
+let carritoNina = document.getElementById("carrito-nina");
+carritoNina.addEventListener("click", agregarCarrito3);
+function agregarCarrito3() {
+console.log("Se ha agregado el producto " + temporadaVerano[2].nombre + " al carrito $" + temporadaVerano[2].precio)
+          }
+let carritoLisa = document.getElementById("carrito-lisa");
+carritoLisa.addEventListener("click", agregarCarrito4);
+function agregarCarrito4() {
+console.log("Se ha agregado el producto " + temporadaVerano[3].nombre + " al carrito $" + temporadaVerano[3].precio)
+        }
+let carritoKika = document.getElementById("carrito-kika");
+carritoKika.addEventListener("click", agregarCarrito5);
+function agregarCarrito5() {
+console.log("Se ha agregado el producto " + temporadaVerano[4].nombre + " al carrito $" + temporadaVerano[4].precio)
+        }
+let carritoChofa = document.getElementById("carrito-chofa");
+carritoChofa.addEventListener("click", agregarCarrito6);
+function agregarCarrito6() {
+console.log("Se ha agregado el producto " + temporadaVerano[5].nombre + " al carrito $" + temporadaVerano[5].precio)
+                }
+let carritoLola = document.getElementById("carrito-lola");
+carritoLola.addEventListener("click", agregarCarrito7);
+function agregarCarrito7() {
+ console.log("Se ha agregado el producto " + temporadaVerano[6].nombre + " al carrito $" + temporadaVerano[6].precio)
+     }
+let carritoTita = document.getElementById("carrito-tita");
+carritoTita.addEventListener("click", agregarCarrito8);
+function agregarCarrito8() {
+console.log("Se ha agregado el producto " + temporadaVerano[7].nombre + " al carrito $" + temporadaVerano[7].precio)
+          }
+let carritoNuri = document.getElementById("carrito-nuri");
+carritoNuri.addEventListener("click", agregarCarrito9);
+function agregarCarrito9() {
+console.log("Se ha agregado el producto " + temporadaVerano[8].nombre + " al carrito $" + temporadaVerano[8].precio)
+                    }

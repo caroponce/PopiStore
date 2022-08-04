@@ -14,6 +14,24 @@ h1 {
     font-size: 40px;
 }
 
+#bienvenido {
+    color: rgb(247, 176, 22);
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.lista-consultas {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+.item-lista {
+    
+    border: 1px black solid;
+}
 p {
     display: flex;
     justify-content: center;
@@ -41,6 +59,14 @@ p {
     .lola { grid-area: 3 / 2 / 4 / 3; }
     .nina { grid-area: 3 / 3 / 4 / 4; }
 
+/*
+button {
+    display: flex; 
+    justify-content: center; 
+    color: grey;
+    background-color: black;
+}    
+*/
 .redes {
     display: flex;
     justify-content: space-around;
