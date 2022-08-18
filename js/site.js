@@ -10,31 +10,57 @@ const temporadaVerano = [
     {id: 9, nombre: "Nuri", precio: 4500, categoria: "camisa", imagen: "multimedia/imagenes/camisanuri.webp"},
 ]
 
-const carritoCompras = [];
+let carritoCompras = [];
 
-let nombreUsuario = prompt("Registrate dejando tu nombre")
+let nombreUsuario = prompt("Registrate dejando tu nombre");
 
 let bienvenido = document.getElementById("bienvenido");
 bienvenido.innerText = `Bienvenido/a ${nombreUsuario}. Gracias por registraste`
 
 
-
+// eventos de consultas
 let formaDePago = document.getElementById("formaPago");
 let formaDeEnvio = document.getElementById("formaEnvio");
 let devoluciones = document.getElementById("devoluciones")
 
-formaDePago.addEventListener("mousemove", (e) => {
-    return formaDePago.innerText = "15%off en efectivo. 3/6 cuotas sin interes"
-    
+//medios de pagos
+const mediosPagos = document.getElementById("contenedor-mediosp")
+formaDePago.addEventListener("mouseover", () => {
+  const div = document.createElement("div");
+    div.classList.add("texto-pagos");
+    div.innerHTML = `<img id="textos-pagos" src="./multimedia/imagenes/mediosdepagos-atras.svg">
+    `
+    mediosPagos.appendChild(div)
+ 
+})
+$("#formaPago").mouseleave(function(){
+  $(".texto-pagos").hide();
+}) 
+// entregas
+const contenedorEntregas = document.getElementById("contenedor-entregas")
+formaDeEnvio.addEventListener("mouseover", () => {
+  const div = document.createElement("div");
+  div.classList.add ("texto-entregas");
+  div.innerHTML = `<img id="textos-entregas" src="./multimedia/imagenes/entregas-atras.svg">`
+  contenedorEntregas.appendChild(div)
+})
+$("#formaEnvio").mouseleave(function(){
+  $(".texto-entregas").hide();
+})
+// devoluciones
+const contenedorDevoluciones = document.getElementById("contenedor-devoluciones")
+devoluciones.addEventListener("mouseover", () => {
+  const div = document.createElement("div");
+  div.classList.add ("texto-devoluciones");
+  div.innerHTML = `<img id="textos-devoluciones" src="./multimedia/imagenes/devoluciones-atras.svg">`
+  contenedorDevoluciones.appendChild(div)
+})
+$("#devoluciones").mouseleave(function(){
+  $(".texto-devoluciones").hide();
 })
 
-formaDeEnvio.addEventListener("mousemove", (e) => {
-    return formaDeEnvio.innerText = "Envios a todos el pais. Envios a CABA y GBA en 24hs"
-})
 
-devoluciones.addEventListener("mousemove", (e) => {
-    return devoluciones.innerHTML = "Devoluciones dentro de los 15 días de recibida la compra"
-})
+// fin eventos de consultas
 
 const contenedorProductos = document.getElementById("contenedor-productos");
 const contenedorCarrito = document.getElementById("contenedor-carrito");
@@ -74,6 +100,43 @@ carritoCompras.forEach((productoCarrito) => {
     <p> $${productoCarrito.precio} </p> `
     contenedorCarrito.appendChild(divCarrito)
     totalCompra.innerHTML = "Total: $" + carritoCompras.reduce ((acc, productoCarrito) => acc + productoCarrito.precio, 0)
-    localStorage.setItem(productoCarrito.nombre, productoCarrito.precio)
+    localStorage.getItem(productoCarrito.nombre, productoCarrito.precio)
+    
 })
 }
+
+const finalizarCompra = document.getElementById("finalizar-compra")
+
+finalizarCompra.addEventListener("click", () => {
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: 'Quierés confirmar la compra?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, quiero confirmar',
+        cancelButtonText: 'No, cancelalo!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            'Buenisimo!',
+            'Orden creada. Nos comunicaremos con vos para realizar el pago'
+                      )
+        } else if (
+          
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Ok',
+            'Si te arrepentís volvé y comprá!'
+          )
+        }
+      })
+})

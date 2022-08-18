@@ -28,11 +28,34 @@ list-style: none;
 font-size: 20px;
 padding-bottom: 20px;
 }
-.item-lista {
-
-border: 1px black solid;
+/*
+.texto-pagos {
+    position: relative;
+     top: 305px; left: 11px; 
+    width: 100%;
+    height: auto;
 }
-p {
+*/
+/*
+
+.contenedor-mediosp {
+    border: 10px black solid;
+    
+}
+*/
+#formaPago {
+    width: 100%;
+    height: auto;
+}
+#formaEnvio {
+    width: 100%;
+    height: auto;
+}
+#devoluciones {
+    width: 100%;
+    height: auto;
+}
+header p {
 display: flex;
 justify-content: center;
 font-size: 15px;
