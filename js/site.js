@@ -61,6 +61,30 @@ $("#devoluciones").mouseleave(function(){
 
 
 // fin eventos de consultas
+// calcular precio envio
+
+let form = document.getElementById("forms");
+form.onclick = function(e){
+  e.preventDefault();
+let name = document.getElementById("partido").value;
+
+// document.getElementById('print').innerHTML=name.toUpperCase();
+fetch("envios.json")
+.then((response) => response.json())
+.then((data) => {
+    
+    data.forEach((enviosPrecio) => {
+        
+    if (name == enviosPrecio.partido) {
+        document.getElementById('print').innerHTML= `El envios es de: $${enviosPrecio.precio}`
+    }
+    })
+})
+
+}
+
+
+// fin calcular precio envio
 
 const contenedorProductos = document.getElementById("contenedor-productos");
 const contenedorCarrito = document.getElementById("contenedor-carrito");
@@ -140,3 +164,5 @@ finalizarCompra.addEventListener("click", () => {
         }
       })
 })
+
+

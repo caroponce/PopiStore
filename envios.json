@@ -1,0 +1,25 @@
+[
+    {"partido": "caba", "precio": 400},
+    {"partido": "san isidro", "precio": 700},
+    {"partido": "vicente lopez", "precio": 700},
+    {"partido": "san martin", "precio": 700},
+    {"partido": "san fernando", "precio": 700},
+    {"partido": "tigre", "precio": 1200},
+    {"partido": "san miguel", "precio": 1200},
+    {"partido": "malvinas argentinas", "precio": 1200},
+    {"partido": "moron", "precio": 700},
+    {"partido": "ituzaingo", "precio": 700},
+    {"partido": "tres de febrero", "precio": 700},
+    {"partido": "la matanza", "precio": 1200},
+    {"partido": "moreno", "precio": 1200},
+    {"partido": "merlo", "precio": 1200},
+    {"partido": "avellaneda", "precio": 700},
+    {"partido": "lanus", "precio": 700},
+    {"partido": "lomas de zamora", "precio": 700},
+    {"partido": "berazategui", "precio": 1200},
+    {"partido": "quilmes", "precio": 1200},
+    {"partido": "florencio varela", "precio": 1200},    
+    {"partido": "ezeiza", "precio": 1200},
+    {"partido": "esteban echeverria", "precio": 1200}
+
+]
