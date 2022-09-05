@@ -1,3 +1,4 @@
+// array con los productos.
 const temporadaVerano = [
     {id: 1, nombre: "Eva", precio: 6000, categoria: "vestido", imagen:"multimedia/imagenes/vestidoeva.webp"},
     {id: 2, nombre: "Bianca", precio: 6500, categoria: "vestido", imagen: "multimedia/imagenes/vestidobianca.webp"},
@@ -10,13 +11,23 @@ const temporadaVerano = [
     {id: 9, nombre: "Nuri", precio: 4500, categoria: "camisa", imagen: "multimedia/imagenes/camisanuri.webp"},
 ]
 
-let carritoCompras = [];
 
+
+let carrito = [];
+// local storage
+document.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('carrito')){
+      carrito = JSON.parse(localStorage.getItem('carrito'))
+      ActualizarCarrito()
+  }
+})
+
+/*
+// lo saqué ya que era bastante molesto por el prompt
 let nombreUsuario = prompt("Registrate dejando tu nombre");
-
 let bienvenido = document.getElementById("bienvenido");
 bienvenido.innerText = `Bienvenido/a ${nombreUsuario}. Gracias por registraste`
-
+*/ 
 
 // eventos de consultas
 let formaDePago = document.getElementById("formaPago");
@@ -68,7 +79,7 @@ form.onclick = function(e){
   e.preventDefault();
 let name = document.getElementById("partido").value;
 
-// document.getElementById('print').innerHTML=name.toUpperCase();
+
 fetch("envios.json")
 .then((response) => response.json())
 .then((data) => {
@@ -76,7 +87,7 @@ fetch("envios.json")
     data.forEach((enviosPrecio) => {
         
     if (name == enviosPrecio.partido) {
-        document.getElementById('print').innerHTML= `El envios es de: $${enviosPrecio.precio}`
+        document.getElementById('print').innerHTML= `El envio a ${enviosPrecio.partido} es de: $${enviosPrecio.precio}`
     }
     })
 })
@@ -92,10 +103,10 @@ const totalCompra = document.getElementById("total-compra");
 const agregarAlCarrito = (produId) => {
     
     const itemCarrito = temporadaVerano.find((produ) => produ.id === produId);
-    carritoCompras.push(itemCarrito);
+    carrito.push(itemCarrito);
     ActualizarCarrito();
 }
-
+// inyectar en el html el stock
 temporadaVerano.forEach((productos) => {
     const div = document.createElement("div");
     div.classList.add("productos");
@@ -103,8 +114,9 @@ temporadaVerano.forEach((productos) => {
     <div class"productos${productos.id}">
     <img class="foto-producto" src="${productos.imagen}">
     <h2 class="nombre-producto" > ${productos.nombre} </h2>
-    <p>  $${productos.precio} </p>
-    <button id="boton${productos.id}" class = "boton"> Agregar al carrito </button>
+    <p class="precio-prod">  $${productos.precio} </p>
+    <div class="boton-agregar-prod"> <button id="boton${productos.id}" class = "boton"> Agregar al carrito </button>
+    </div>
     </div>
     `
     contenedorProductos.appendChild(div)
@@ -114,22 +126,43 @@ temporadaVerano.forEach((productos) => {
     });;
 })
 
+const eliminarDelCarrito = (prodId) => {
+  const item = carrito.find((prod) => prod.id === prodId)
+
+  const indice = carrito.indexOf(item) 
+  carrito.splice(indice, 1) 
+  ActualizarCarrito() 
+}
+
+// lista de productos elegidos en el carrito
 const ActualizarCarrito = () => {
 contenedorCarrito.innerHTML = "";
-carritoCompras.forEach((productoCarrito) => {
+carrito.forEach((productoCarrito) => {
     const divCarrito = document.createElement("div");
     divCarrito.classList.add("productoCarrito")
     divCarrito.innerHTML = `
     <p> ${productoCarrito.nombre} </p>
-    <p> $${productoCarrito.precio} </p> `
+    <p> $${productoCarrito.precio} </p>
+    <button onclick="eliminarDelCarrito(${productoCarrito.id})" class = "boton-eliminar"> X </button>
+    `
     contenedorCarrito.appendChild(divCarrito)
-    totalCompra.innerHTML = "Total: $" + carritoCompras.reduce ((acc, productoCarrito) => acc + productoCarrito.precio, 0)
-    localStorage.getItem(productoCarrito.nombre, productoCarrito.precio)
+    
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+
     
 })
+totalCompra.innerHTML = "Total: $" + carrito.reduce ((acc, productoCarrito) => acc + productoCarrito.precio, 0)
 }
 
-const finalizarCompra = document.getElementById("finalizar-compra")
+
+$(document).ready(function(){ 
+  $('#boton-carrito').on('click',function(){
+     $('#carrito-todo').toggle('slow');
+  });
+});
+
+// alert para finalizar la compra
+const finalizarCompra = document.getElementById("finalizar-compra") 
 
 finalizarCompra.addEventListener("click", () => {
     const swalWithBootstrapButtons = Swal.mixin({

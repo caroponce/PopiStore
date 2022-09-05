@@ -14,6 +14,21 @@ justify-content: center;
 font-size: 40px;
 }
 
+#boton-carrito {
+    border: none;
+    color: rgb(0, 0, 0);
+    font-size: 40px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 10px 20px;
+    transition: all .3s;
+}
+.carrito-con {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
 #bienvenido {
 color: rgb(247, 176, 22);
 font-size: 30px;
@@ -86,7 +101,7 @@ height: auto;
 .productos8 { grid-area: 3 / 2 / 4 / 3; }
 .productos9 { grid-area: 3 / 3 / 4 / 4; }
 
-.nombre-producto {
+.nombre-producto, .precio-prod, .boton-agregar-prod{
     display: flex;
     justify-content: center;
 }
@@ -97,16 +112,43 @@ display: flex;
 justify-content: flex-end;
 color: black;
 }    
-
+#carrito-carrito {
+    position: relative;
+    background-color: rgba(236, 168, 210, 0.185);
+    /* min-width: 500px; */
+    /* padding: 20px; */
+    /* margin-top: -100%; */
+    /* transition: all .5s; */
+}
+#carrito-todo {
+    display: none;
+    
+}
 #contenedor-carrito {
     font-size: 20px;
     border: 1px solid black;
+}
+
+.productoCarrito {
+    display: flex;
+    justify-content: space-around;
+}
+
+.boton-eliminar {
+    background-color: red;
 }
 #total-compra {
     font-size: 20px;
     display: flex;
     justify-content: center;
 }
+.boton-finalizar {
+    justify-content: center;
+    display: flex;
+    font-size: 21px;
+    padding: 15px;
+}
+
 .redes {
 display: flex;
 justify-content: space-around;
@@ -116,4 +158,3 @@ justify-content: space-around;
 height: 70px;
 right: 70px;
 }
-

@@ -15,10 +15,27 @@
         <p> Envios a todo el pais. 3-6-12 cuotas sin interes </p>
         <p> 15% off pagando con transferencia </p>
         <h1> POPI STORE </h1>
+        <div class="carrito-con">
+        <button id="boton-carrito"> Carrito</button> </div>
    </header>
     
-     <div id="bienvenido"> Bienvenido/a  </div>
-     
+     <div id="bienvenido" > Bienvenido/a  </div>
+     <div id="carrito-todo"> 
+        <div id="carrito-carrito">
+        <section id = "contenedor-carrito"> Carrito: </section>
+        <section id="total-compra"> Total : </section>
+        
+   <section class="boton-finalizar"> <button id="finalizar-compra"> Finalizar compra</button> </section>
+   
+   <form name="form" id="forms">
+    Coloque su partido: &nbsp; 
+  <input type="text" id="partido">
+    <input type="button" value=" Calcular envio">
+   </form>
+    <p id="print"></p>
+        </div> 
+    </div>
+    
    <section>
     <img class="style" src="multimedia/imagenes/style.svg" alt="style">
    </section>
@@ -37,15 +54,8 @@
     </ul>    
    </div>
    
-   <section id = "contenedor-carrito"> Carrito: </section>
-   <section id="total-compra"> Total : </section>
-   <form name="form" id="forms">
-    Coloque su partido: &nbsp; 
-  <input type="text" id="partido">
-    <input type="button" value=" Calcular envio">
-   </form>
-    <p id="print"></p>
-   <section> <button id="finalizar-compra"> Finalizar compra</button> </section> 
+   
+   
    <section>
     <div id="contenedor-productos"></div>
    </section>
